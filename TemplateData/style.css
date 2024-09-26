@@ -1,16 +1,247 @@
-body { padding: 0; margin: 0 }
-#unity-container { position: absolute }
-#unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
-#unity-container.unity-mobile { position: fixed; width: 100%; height: 100% }
-#unity-canvas { background: #231F20 }
-.unity-mobile #unity-canvas { width: 100%; height: 100% }
-#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
-#unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center }
-#unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; margin-left: 6.5px; background: url('progress-bar-empty-dark.png') no-repeat center }
-#unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
-#unity-footer { position: relative }
-.unity-mobile #unity-footer { display: none }
-#unity-webgl-logo { float:left; width: 204px; height: 38px; background: url('webgl-logo.png') no-repeat center }
-#unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
-#unity-fullscreen-button { cursor:pointer; float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
-#unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+/* Tổng thể */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2b2b2b;
+    /* Màu nền */
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    position: relative;
+    align-items: center;
+}
+
+/* Sidebar trái chứa avatar và các dự án */
+#sidebar-left {
+    width: 200px;
+    background-color: #3a3a3a;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+}
+
+/* Avatar và cũng là nút Home */
+#avatar-home {
+    width: 150px;
+    height: 150px;
+    background-color: #ff9800;
+    /* Màu cam */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+    /* Bóng bên trong */
+}
+
+#avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+
+/* Danh sách các dự án */
+#project-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project {
+    width: 80%;
+    background-color: #2b2b2b;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.project:hover {
+    background-color: #ff9800;
+    /* Màu cam khi hover */
+}
+
+#game-container {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #2b2b2b;
+    padding: 20px;
+    height: 100vh;
+    margin-right: 100px;
+    margin-left: 220px;
+    position: relative;
+}
+
+#unity-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 70%;
+    position: relative;
+    /* Đặt lên cao hơn để border hover lên */
+}
+
+#unity-canvas {
+    border: 10px solid #e68900;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+}
+
+#game-info {
+    position: absolute;
+    bottom: -50px;
+    /* Dịch xuống phía dưới canvas */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    width: 50%;
+    padding: 10px;
+    background-color: rgba(75, 75, 75, 0.7);
+    border-radius: 10px;
+    z-index: 2;
+    /* Đảm bảo nằm trên canvas */
+}
+
+#game-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#game-description {
+    font-size: 16px;
+    color: #ddd;
+}
+
+/* Nút fullscreen */
+#fullscreen-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #ff9800;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 2;
+    font-weight: 600;
+    /* Đảm bảo nút nằm trên canvas */
+}
+
+#fullscreen-btn:hover {
+    background-color: #e68900;
+}
+
+/* Sidebar phải chứa các nút mạng xã hội */
+#sidebar-right {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.social {
+    width: 80px;
+    height: 80px;
+    background-color: #ff9800;
+    /* Nền cam */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.social:hover {
+    background-color: #e68900;
+    /* Cam đậm khi hover */
+}
+
+/* Thanh tải tiến trình */
+#unity-loading-bar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#unity-progress-bar-empty {
+    width: 141px;
+    height: 18px;
+    margin-top: 10px;
+    margin-left: 6.5px;
+    background: #4a4a4a;
+    /* Màu nền xám tối */
+}
+
+#unity-progress-bar-full {
+    width: 0%;
+    height: 18px;
+    margin-top: 10px;
+    background: #ff9800;
+    /* Màu cam khi tải */
+}
+
+/* Cảnh báo Unity */
+#unity-warning {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%);
+    background: white;
+    color: black;
+    padding: 10px;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer */
+#unity-footer {
+    position: relative;
+}
+
+.unity-mobile #unity-footer {
+    display: none;
+}
+
+#unity-build-title {
+    float: right;
+    margin-right: 10px;
+    line-height: 38px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: white;
+}
+
+/* Avatar as home button hover effect */
+#avatar-home:hover {
+    background-color: #e68900;
+    transition: background-color 0.3s ease;
+}
