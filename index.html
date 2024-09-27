@@ -133,10 +133,9 @@
           unityInstance.SetFullscreen(1);
         };
       }).catch((message) => {
-        console.error("Error creating Unity instance:", message);
+        alert(message);
       });
     };
-
 
     document.body.appendChild(script);
   </script>
