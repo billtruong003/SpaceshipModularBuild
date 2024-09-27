@@ -132,7 +132,7 @@ body {
 #fullscreen-btn {
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    right: 150px;
     padding: 10px 20px;
     background-color: #ff9800;
     border: none;
