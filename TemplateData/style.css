@@ -1,247 +1,414 @@
-/* Tổng thể */
+/* General Styles */
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #2b2b2b;
-    /* Màu nền */
-    display: flex;
-    justify-content: space-between;
-    height: 100vh;
-    position: relative;
-    align-items: center;
-}
-
-/* Sidebar trái chứa avatar và các dự án */
-#sidebar-left {
-    width: 200px;
-    background-color: #3a3a3a;
-    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    position: fixed;
-    left: 0;
+    min-height: 100vh;
 }
 
-/* Avatar và cũng là nút Home */
-#avatar-home {
+header {
+    background-color: #252525;
+    padding: 20px;
+    position: relative;
+}
+
+.header-content {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.menu-toggle {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.sidebar {
+    background-color: #252525;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+/* Left Sidebar */
+#sidebar-left {
+    width: 250px;
+    left: 0;
+    transform: translateX(0);
+    /* Initially visible */
+}
+
+#sidebar-left.collapsed {
+    transform: translateX(-220px);
+    /* Width minus the toggle button's diameter */
+}
+
+/* Right Sidebar */
+#sidebar-right {
     width: 150px;
-    height: 150px;
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+    transition: transform 0.3s ease;
+}
+
+#sidebar-right.open-right {
+    transform: translate(0, -50%);
+}
+
+/* Close Buttons */
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+/* Circular Toggle Button */
+.sidebar-toggle {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    /* Half of the button's width to overlap */
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
     background-color: #ff9800;
-    /* Màu cam */
+    border: none;
     border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1100;
+}
+
+.sidebar-toggle:hover {
+    background-color: #e67e22;
+}
+
+#sidebar-left.collapsed+.sidebar-toggle {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 900;
+}
+
+#overlay.active {
+    display: block;
+}
+
+/* Open Sidebars */
+.sidebar.open-left {
+    transform: translateX(0);
+}
+
+.sidebar.open-right {
+    transform: translateX(0);
+}
+
+/* Main Content */
+#main-content {
+    flex: 1;
+    margin-left: 250px;
+    margin-right: 0;
+    padding: 20px;
+    transition: margin-left 0.3s ease, margin-right 0.3s ease;
+}
+
+#main-content.shift-left {
+    margin-left: 30px;
+    /* Adjust based on collapsed sidebar */
+}
+
+/* Avatar Home */
+#avatar-home {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     cursor: pointer;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
-    /* Bóng bên trong */
 }
 
 #avatar {
     width: 140px;
     height: 140px;
     border-radius: 50%;
+    border: 5px solid #e67e22;
 }
 
-/* Danh sách các dự án */
-#project-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#project-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .project {
     width: 80%;
-    background-color: #2b2b2b;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    margin: 10px 0;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 10px 15px;
+    margin: 8px auto;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.project-toggle {
+    background: none;
+    border: none;
+    color: inherit;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.project-toggle:hover {
+    color: #ff9800;
 }
 
 .project:hover {
-    background-color: #ff9800;
-    /* Màu cam khi hover */
+    background-color: #444;
 }
 
+.project-details {
+    list-style: none;
+    padding-left: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.project-details li {
+    padding: 5px 0;
+    color: #ccc;
+}
+
+.project.active .project-details {
+    max-height: 200px;
+    /* Adjust as needed */
+}
+
+/* Unity Container */
 #game-container {
-    flex-grow: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #2b2b2b;
-    padding: 20px;
-    height: 100vh;
-    margin-right: 100px;
-    margin-left: 220px;
-    position: relative;
 }
 
 #unity-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 70%;
+    width: 960px;
+    height: 540px;
     position: relative;
-    /* Đặt lên cao hơn để border hover lên */
 }
 
 #unity-canvas {
-    border: 10px solid #e68900;
+    width: 100%;
+    height: 100%;
+    border: 5px solid #ff9800;
     border-radius: 10px;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
 }
 
 #game-info {
-    position: absolute;
-    bottom: -50px;
-    /* Dịch xuống phía dưới canvas */
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 20px;
     text-align: center;
-    color: white;
-    width: 50%;
-    padding: 10px;
-    background-color: rgba(75, 75, 75, 0.7);
-    border-radius: 10px;
-    z-index: 2;
-    /* Đảm bảo nằm trên canvas */
 }
 
 #game-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 #game-description {
     font-size: 16px;
-    color: #ddd;
+    line-height: 1.5;
+    color: #ccc;
 }
 
-/* Nút fullscreen */
 #fullscreen-btn {
     position: absolute;
     bottom: 20px;
-    right: 75px;
-    padding: 10px 20px;
+    right: 20px;
+    padding: 12px 24px;
     background-color: #ff9800;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: #fff;
     cursor: pointer;
+    font-weight: bold;
     transition: background-color 0.3s ease;
-    z-index: 2;
-    font-weight: 600;
-    /* Đảm bảo nút nằm trên canvas */
 }
 
 #fullscreen-btn:hover {
-    background-color: #e68900;
+    background-color: #e67e22;
 }
 
-/* Sidebar phải chứa các nút mạng xã hội */
-#sidebar-right {
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+/* Social Links */
+.social-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .social {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     background-color: #ff9800;
-    /* Nền cam */
-    color: white;
+    color: #fff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 14px;
+    text-align: center;
+}
+
+.social a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .social:hover {
-    background-color: #e68900;
-    /* Cam đậm khi hover */
+    background-color: #e67e22;
 }
 
-/* Thanh tải tiến trình */
-#unity-loading-bar {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
+/* Additional Content */
+#additional-content {
+    margin-top: 40px;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#unity-progress-bar-empty {
-    width: 141px;
-    height: 18px;
-    margin-top: 10px;
-    margin-left: 6.5px;
-    background: #4a4a4a;
-    /* Màu nền xám tối */
+#additional-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-#unity-progress-bar-full {
-    width: 0%;
-    height: 18px;
-    margin-top: 10px;
-    background: #ff9800;
-    /* Màu cam khi tải */
+.blog-posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-/* Cảnh báo Unity */
-#unity-warning {
-    position: absolute;
-    left: 50%;
-    top: 5%;
-    transform: translate(-50%);
-    background: white;
-    color: black;
-    padding: 10px;
-    display: none;
+.blog-post {
+    background-color: #333;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 48%;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.blog-post h3 {
+    margin-top: 0;
+}
+
+.blog-post p {
+    color: #ccc;
+}
+
+.blog-post a {
+    color: #ff9800;
+    text-decoration: none;
+}
+
+.blog-post a:hover {
+    text-decoration: underline;
+}
+
+.video-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.video-links iframe {
+    width: 48%;
+    margin-bottom: 20px;
 }
 
 /* Footer */
-#unity-footer {
-    position: relative;
+footer {
+    background-color: #252525;
+    padding: 20px;
+    text-align: center;
 }
 
-.unity-mobile #unity-footer {
-    display: none;
+footer p {
+    margin: 0;
+    color: #ccc;
 }
 
-#unity-build-title {
-    float: right;
-    margin-right: 10px;
-    line-height: 38px;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    color: white;
+/* Foldout Sidebars */
+.sidebar.collapsed {
+    transform: translateX(-220px);
+    /* Adjust based on toggle button */
 }
 
-/* Avatar as home button hover effect */
-#avatar-home:hover {
-    background-color: #e68900;
-    transition: background-color 0.3s ease;
+#sidebar-right.collapsed {
+    transform: translateX(100%);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    #main-content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #sidebar-left {
+        transform: translateX(-250px);
+    }
+
+    #sidebar-right {
+        transform: translateX(150px);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Rotate the toggle button icon when collapsed */
+#sidebar-left.collapsed+.sidebar-toggle {
+    transform: translateY(-50%) rotate(180deg);
 }
