@@ -260,6 +260,25 @@ header {
     line-height: 1.5;
     color: #ccc;
 }
+.button-style {
+    background-color: #FF5722; /* Màu cam */
+    color: white; /* Màu chữ trắng */
+    padding: 10px 20px; /* Khoảng cách bên trong nút */
+    border: none; /* Không có viền */
+    border-radius: 5px; /* Bo tròn góc */
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Con trỏ khi di chuột qua */
+    transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển tiếp */
+}
+
+.button-style:hover {
+    background-color: #FF3D00; /* Màu nền khi hover */
+    transform: scale(1.05); /* Tăng kích thước một chút khi hover */
+}
+
+.button-style:active {
+    transform: scale(0.95); /* Giảm kích thước khi nhấn */
+}
 
 #fullscreen-btn {
     position: absolute;
