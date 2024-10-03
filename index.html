@@ -7,37 +7,58 @@
   <title>SpaceshipModular</title>
   <link rel="shortcut icon" href="TemplateData/favicon.ico">
   <link rel="stylesheet" href="TemplateData/style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Unity WebGL Template -->
+  <script src="TemplateData/UnityProgress.js"></script>
 </head>
 
 <body>
   <!-- Header with About Section -->
   <header>
     <div class="header-content">
-      <h1>About</h1>
-      <p>Welcome to SpaceshipModular, an immersive spaceship building game with modular parts and interactive gameplay.
+      <h1>WebGL Spaceship Modular Test</h1>
+      <!-- <p>WebGL Spaceship Modular Test <br> -->
       </p>
     </div>
     <!-- Hamburger Menu for Mobile View -->
-    <button id="menu-toggle" class="menu-toggle">&#9776;</button>
+    <button id="menu-toggle" class="menu-toggle">&#9776;</button> 
   </header>
 
-  <!-- Sidebars -->
   <aside id="sidebar-left" class="sidebar">
     <!-- Avatar as Home button -->
     <div id="avatar-home">
       <img src="TemplateData/avatar.png" alt="Avatar" id="avatar">
     </div>
-
-    <!-- Project list -->
-    <nav id="project-list">
+  
+    <!-- Project 1 Info -->
+    <div id="project-1-info">
+      <h3><span class="highlight">Bill</span> The <span class="highlight">Dev</span></h3>
+      <p><strong>(Author)</strong></p>
+      <p>Game Developer</p>
+      <blockquote>
+        "Becoming a dev is like cultivating immortality—constant learning and breaking limits."
+      </blockquote>
       <ul>
-        <li class="project">Project 1</li>
-        <li class="project">Project 2</li>
-        <li class="project">Project 3</li>
-        <li class="project">Project 4</li>
+        <li>Subcribe me on <span class="highlight"><a href="http://billthedev.com" target="_blank" style="color: red;">YOUTUBE</a></span></li>
+        <li>Join our discord sever <span class="highlight"><a href="http://billthedev.com" target="_blank" style="color:rgb(128, 128, 255);">DISCORD</a></span></li>
+        <li>About me <span class="highlight"><a href="http://billthedev.com" target="_blank">billthedev.com</a></span>
+        </li>
       </ul>
-    </nav>
+    </div>
+
+    <!-- <nav id="project-list"></nav>
+    <ul>
+      <li class="project">Home</li>
+      <li class="project">Discord</li>
+      <li class="project">Youtube</li>
+      <li class="project">Facebook</li>
+    </ul>
+    </nav> -->
   </aside>
+
 
   <!-- Main Content -->
   <main id="main-content">
@@ -61,60 +82,92 @@
 
       <!-- Game info and title -->
       <div id="game-info">
-        <h2 id="game-title">SpaceshipModular</h2>
-        <p id="game-description">
-          An immersive spaceship building game with modular parts and interactive gameplay.
-        </p>
-        <a href="Asset/WindowBuild/SpaceshipModularWindow_1.0.zip" download><button class="button-style">Download Spaceship Modular</button></a>
+        <h2 id="game-title">Spaceship Modular - Customizable Spaceship Generation Tool</h2>
+          <p id="game-description">
+            <strong style="color:#ff9800; ">Description:</strong> Spaceship Modular is a personal project developed by Bill The Dev, designed to help game
+            developers easily create customized spaceship assets for their games.<br><br>
+          
+            This tool features <strong>10 base spaceship models</strong> with <strong>4 customizable parts:</strong> head, wings,
+            engines, and weapons. These components allow for up to <strong>10,000 unique spaceship variations</strong>.
+            Additionally, users can modify colors, adjust metallic and surface properties, and craft polished, game-ready
+            spaceships.<br><br>
+          
+            The project is a showcase of Bill The Dev’s 3D modeling skills and aims to contribute to the game development
+            community by offering a powerful and user-friendly tool for creating custom spaceships.<br><br>
+          
+            <strong style="color:#ff9800;">Key Features:</strong><br>
+              - 10 base spaceship models.<br>
+              - 4 customizable parts: head, wings, engines, and weapons.<br>
+              - Over 10,000 possible spaceship variations.<br>
+              - Customizable colors and material properties (metallics, gloss).<br>
+              - Easy integration into game development projects.<br>
+          </p>
+        <a href="Asset/WindowBuild/SpaceshipModularv1.0.zip" download><button class="button-style">Download Spaceship Modular</button></a>
       </div>
     </div>
-
+  
     <!-- Blog or Video Links -->
     <section id="additional-content">
-      <h2>Latest Blog Posts</h2>
-      <div class="blog-posts">
-        <!-- Placeholder for blog posts -->
-        <article class="blog-post">
-          <h3>Blog Post Title 1</h3>
-          <p>Summary of the blog post content...</p>
-          <a href="#">Read more</a>
-        </article>
-        <article class="blog-post">
-          <h3>Blog Post Title 2</h3>
-          <p>Summary of the blog post content...</p>
-          <a href="#">Read more</a>
-        </article>
+      <div class="header-content">
+        <h1 style="font-size: 50px; margin-top: 10px; margin-bottom: 10px; background-color: #2c2c2c; border-radius: 10px; color: #ffffff;border: 2px solid #ff9800;">Media</h1>
+        </p>
       </div>
-
-      <h2>Featured Videos</h2>
-      <div class="video-links">
-        <!-- Placeholder for embedded videos -->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/videoid1" frameborder="0"
-          allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/videoid2" frameborder="0"
-          allowfullscreen></iframe>
+    
+      <!-- Blog Section -->
+      <div class="blog-section" >
+        <h3>Latest Blog Posts</h3>
+        <div class="blog-posts"style="border: 2px solid #ff9800;">
+          <article class="blog-post">
+            <h3 style="color: #0077b5; font-size: 20px;"><i class="fab fa-linkedin fa-1x"></i> My LinkedIn Post</h3>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7247097126483058688" height="500"
+              width="560" frameborder="20%" allowfullscreen="" title="Embedded post"></iframe>
+          </article>
+    
+          <!-- <article class="blog-post">
+            <h3>Blog Post Title 2</h3>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7247097126483058688" height="315"
+              width="560" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+          </article> -->
+        </div>
       </div>
+    
+      <!-- Video Section -->
+      <!-- <div class="video-section">
+        <h3>Featured Videos</h3>
+        <div class="video-links">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/videoid1" frameborder="0"
+            allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/videoid2" frameborder="0"
+            allowfullscreen></iframe>
+        </div>
+      </div> -->
     </section>
-  </main>
+    </main>
 
-  <!-- Right Sidebar with social buttons -->
-  <aside id="sidebar-right" class="sidebar">
-    <nav class="social-links">
-      <ul>
-        <li class="social"><a href="#">Facebook</a></li>
-        <li class="social"><a href="#">Twitter</a></li>
-        <li class="social"><a href="#">Instagram</a></li>
-      </ul>
-    </nav>
-  </aside>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2023 SpaceshipModular. All rights reserved.</p>
-  </footer>
+      <footer class="bg-dark text-light pt-5">
+          <div class="row">
+            <div class="col text-center py-3 footer-bottom">
+              <p class="mb-0">&copy; 2023 SpaceshipModular. All rights reserved.</p>
+              <div class="col-md-4 footer-section mb-4">
+                <h3 class="text-warning">Follow Us</h3>
+                <div class="d-flex">
+                  <a href="#" class="text-light me-3" style="color: #ffffff;"><i class="fab fa-facebook fa-2x"></i></a>
+                  <a href="#" class="text-light me-3" style="color: #ffffff;"><i class="fab fa-twitter fa-2x"></i></a>
+                  <a href="#" class="text-light me-3" style="color: #ffffff;"><i class="fab fa-instagram fa-2x"></i></a>
+                  <a href="#" class="text-light me-3" style="color: #ffffff;"><i class="fab fa-linkedin fa-2x"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
 
   <!-- External JavaScript -->
   <script src="script.js"></script>
+  <!-- Font Awesome JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  
+  
 </body>
 
 </html>

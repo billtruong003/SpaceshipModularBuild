@@ -2,7 +2,8 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
+    /* Đổi sang Roboto hoặc Arial để đọc dễ hơn */
     background-color: #1e1e1e;
     color: #fff;
     display: flex;
@@ -12,12 +13,15 @@ body {
 
 header {
     background-color: #252525;
+    border: 3px solid #FF9800;
+    border-radius: 20px;
+    margin: 20px 15% 20px 30%;
     padding: 20px;
     position: relative;
 }
 
 .header-content {
-    max-width: 960px;
+    max-width: 100%;
     margin: 0 auto;
     text-align: center;
 }
@@ -36,6 +40,8 @@ header {
 
 .sidebar {
     background-color: #252525;
+    border: 3px solid #FF9800;
+    border-radius: 2px;
     padding-top: 20px;
     position: fixed;
     top: 0;
@@ -70,7 +76,59 @@ header {
 #sidebar-right.open-right {
     transform: translate(0, -50%);
 }
+/* General styles for the info section */
+#project-1-info {
+    background-color: #4b4b4b;
+    border-top: 2px solid #FF9800;
+    border-bottom: 2px solid #FF9800;
+    padding: 15px;
+    color: #EEE;
+    font-family: 'Segoe UI', sans-serif;
+}
 
+#project-1-info h3 {
+    color: #FF9800;
+    font-size: 24px;
+    margin: 0;
+}
+
+#project-1-info .highlight {
+    color: #FF9800;
+    /* Màu nổi bật cho các từ chính */
+}
+
+#project-1-info blockquote {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #CCC;
+    font-style: italic;
+    border-left: 4px solid #FF9800;
+    padding-left: 10px;
+}
+
+#project-1-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#project-1-info ul li {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+#project-1-info ul li span.highlight {
+    color: #FF5722;
+    /* Màu khác cho các phần highlight */
+}
+
+#project-1-info ul li a {
+    color: #00BFFF;
+    text-decoration: none;
+}
+
+#project-1-info ul li a:hover {
+    text-decoration: underline;
+}
 /* Close Buttons */
 .close-btn {
     background: none;
@@ -170,12 +228,20 @@ header {
 
 #project-list ul {
     list-style: none;
+    list-style-type: none;
     padding: 0;
     margin: 0;
+}
+ul {
+    list-style-type: none;
+    /* Loại bỏ bullet (dấu chấm) */
+    padding-left: 0;
+    /* Loại bỏ khoảng cách mặc định bên trái */
 }
 
 .project {
     width: 80%;
+    border: 2px solid #e67e22;
     background-color: #333;
     color: #fff;
     text-align: left;
@@ -243,36 +309,53 @@ header {
     border: 5px solid #ff9800;
     border-radius: 10px;
 }
-
 #game-info {
-    margin-top: 20px;
+    margin: 40px auto;
     text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    border: 2px solid #ff9800;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #game-title {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
-    margin-bottom: 10px;
+    color: #ff9800;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
 }
 
 #game-description {
     font-size: 16px;
-    line-height: 1.5;
-    color: #ccc;
+    line-height: 1.7;
+    color: #eeeeee;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    padding: 30px;
+    background-color: #525252;
+    border-radius: 8px;
+    border: 2px solid #ff9800;
 }
+
 .button-style {
-    background-color: #FF5722; /* Màu cam */
+    background-color: #ff9800; /* Màu cam */
     color: white; /* Màu chữ trắng */
     padding: 10px 20px; /* Khoảng cách bên trong nút */
     border: none; /* Không có viền */
     border-radius: 5px; /* Bo tròn góc */
+    font-weight: 700;
     font-size: 16px; /* Kích thước chữ */
     cursor: pointer; /* Con trỏ khi di chuột qua */
     transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển tiếp */
 }
 
 .button-style:hover {
-    background-color: #FF3D00; /* Màu nền khi hover */
+    background-color: #ffcc7f; /* Màu nền khi hover */
+    color: #444;
     transform: scale(1.05); /* Tăng kích thước một chút khi hover */
 }
 
@@ -343,58 +426,104 @@ header {
     margin-bottom: 20px;
 }
 
+/* Blog Section */
+.blog-section {
+    margin-bottom: 40px;
+    /* Adds some spacing between blog and video sections */
+}
+
 .blog-posts {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .blog-post {
     background-color: #333;
     padding: 20px;
-    margin-bottom: 20px;
-    width: 48%;
     border-radius: 5px;
+    flex: 1;
 }
 
 .blog-post h3 {
     margin-top: 0;
-}
-
-.blog-post p {
-    color: #ccc;
-}
-
-.blog-post a {
     color: #ff9800;
-    text-decoration: none;
 }
 
-.blog-post a:hover {
-    text-decoration: underline;
+.blog-post iframe {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Video Section */
+.video-section {
+    margin-top: 40px;
 }
 
 .video-links {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .video-links iframe {
     width: 48%;
-    margin-bottom: 20px;
+    border-radius: 8px;
 }
 
 /* Footer */
 footer {
     background-color: #252525;
-    padding: 20px;
+    color: #fff;
+    padding: 40px 0;
     text-align: center;
+    border-top: 3px solid #ff9800;
+    margin-top: 20px;
+    /* Thêm đường viền trên */
+}
+
+footer .footer-section h3 {
+    color: #ff9800;
+}
+
+footer .footer-section a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+footer .footer-section a:hover {
+    color: #ff9800;
+    /* Đổi sang màu vàng khi hover */
 }
 
 footer p {
-    margin: 0;
     color: #ccc;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    /* Đường viền nhỏ trên cùng */
+}
+
+.footer-section {
+    margin-bottom: 30px;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.me-3 {
+    margin-right: 15px;
+}
+
+.fa-2x {
+    font-size: 2rem;
+    /* Kích thước lớn hơn cho icon */
 }
 
 /* Foldout Sidebars */
